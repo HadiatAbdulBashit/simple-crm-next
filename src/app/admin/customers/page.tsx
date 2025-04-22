@@ -4,12 +4,11 @@ import { BreadcrumbItem } from "@/types";
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    title: "Dashboard",
-    href: "/admin",
+    title: "Customer",
+    href: "/customers",
   },
 ];
-
-export default function Dashboard() {
+export default function CustomersPage() {
   return (
     <>
       <AppSidebarHeader breadcrumbs={breadcrumbs} />

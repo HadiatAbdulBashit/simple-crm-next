@@ -10,14 +10,11 @@ export const metadata: Metadata = {
   description: "Purple box CRM",
 };
 
-export default function RootLayout({ children, breadcrumbs = [] }: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[] }>) {
+export default function RootLayout({ children }: PropsWithChildren<{}>) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset>
-        <AppSidebarHeader breadcrumbs={breadcrumbs} />
-        {children}
-      </SidebarInset>
+      <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );
 }
