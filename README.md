@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Blog CMS - Full Documentation
 
-## Getting Started
+A simple content management system (CMS) for blog posts built with **Next.js 15 App Router**, **TypeScript**, and **TailwindCSS**. This application allows admin users to create, read, update, and delete (CRUD) blog posts, while public users can view them. Authentication is handled via JWT and cookies. The app includes an API documentation page using Swagger.
 
-First, run the development server:
+---
+
+## [💻 Live page](https://crm-purple-box-next.vercel.app)
+
+### For Authentication
+
+Email: <admin@example.com>
+Password: admin123
+
+---
+
+## 📚 Features
+
+- 📊 Dashboard with statistics using **Recharts**
+- 👥 Customer list with filtering and search and pagination
+- 📄 Placeholder pages: **Reports** and **Automation**
+- 🔐 JWT authentication and route protection via **middleware**
+- 📁 API endpoints for customers (mocked)
+- ✅ Fully responsive (desktop & mobile)
+
+---
+
+## 🛠 Tech Stack
+
+| Category       | Technology            |
+| -------------- | --------------------- |
+| Framework      | React.js (Next.js 15) |
+| Styling        | Tailwind CSS          |
+| Data Fetching  | SWR                   |
+| Charts         | Recharts              |
+| Mock Data      | Faker.js              |
+| State/Router   | App Router (Next.js)  |
+| Authentication | JWT (with Middleware) |
+| Deployment     | Vercel                |
+
+---
+
+## 📦 Installation Guide
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/HadiatAbdulBashit/simple-crm-next.git
+cd simple-crm-next
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+
+# Or
+
+bun add
+```
+
+### 3. Set Environment Variables
+
+Create a `.env` file and set the following:
+
+```env
+JWT_SECRET="secret"
+ADMIN_EMAIL="admin@example.com"
+ADMIN_PASSWORD="examplepassword"
+```
+
+### 4. Start the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+
+# Or
+
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Authentication Flow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- On login, JWT is generated and stored in cookies.
+- Middleware checks for JWT in cookies on `/admin` and `/login` routes.
+- Unauthorized access redirects to `/login`.
+- Authorized user redirects to `/admin` when access `/login`.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🖼 Screenshoot
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Screenshot](docs/image.png)
