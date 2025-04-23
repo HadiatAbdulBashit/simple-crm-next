@@ -16,7 +16,7 @@ export default function RootLayout({ children }: PropsWithChildren<{}>) {
           <div className='flex flex-col items-center gap-4'>
             <Link href={"/"} className='flex flex-col items-center gap-2 font-medium'>
               <div className='mb-1 flex max-w-24 items-center justify-center rounded-md'>
-                <Image src={"/images/logo.webp"} alt='Purple box logo' width={384} height={328} />
+                <Image src={"/images/logo.webp"} alt='Purple box logo' width={384} height={328} className='dark:invert' />
               </div>
               <span className='sr-only'>Log in to your account</span>
             </Link>

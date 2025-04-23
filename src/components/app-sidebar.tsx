@@ -12,10 +12,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { type NavItem } from "@/types";
-import { CalendarSync, FileText, LayoutGrid, LetterText, Users2 } from "lucide-react";
+import { CalendarSync, FileText, LayoutGrid, Users2 } from "lucide-react";
 import Link from "next/link";
 import AppLogo from "./app-logo";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const mainNavItems: NavItem[] = [
   {
