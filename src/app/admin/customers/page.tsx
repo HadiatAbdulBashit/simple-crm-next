@@ -1,8 +1,8 @@
 import { AppSidebarHeader } from "@/components/app-sidebar-header";
 import { BreadcrumbItem, Customer } from "@/types";
-import { DataTable } from "./data-table";
 import { columns } from "./columns";
 import customer from "@/constant/customers.constant.json";
+import { DataTableServer } from "@/components/data-table";
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -16,7 +16,7 @@ export default function CustomersPage() {
     <>
       <AppSidebarHeader breadcrumbs={breadcrumbs} />
       <div className='rounded-xl p-4 w-full'>
-        <DataTable columns={columns} data={customer as Customer[]} />
+        <DataTableServer<Customer, unknown> columns={columns} endpoint='/customers' />
       </div>
     </>
   );

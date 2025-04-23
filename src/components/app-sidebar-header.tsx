@@ -2,6 +2,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { type BreadcrumbItem as BreadcrumbItemType } from "@/types";
 import { NavUser } from "./nav-user";
+import { ModeToggle } from "./toggle";
 
 export function AppSidebarHeader({ breadcrumbs = [] }: { breadcrumbs?: BreadcrumbItemType[] }) {
   return (
@@ -10,7 +11,10 @@ export function AppSidebarHeader({ breadcrumbs = [] }: { breadcrumbs?: Breadcrum
         <SidebarTrigger className='-ml-1' />
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
-      <NavUser />
+      <div className='flex space-x-2 items-center'>
+        <ModeToggle />
+        <NavUser />
+      </div>
     </header>
   );
 }
