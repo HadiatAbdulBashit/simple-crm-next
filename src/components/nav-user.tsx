@@ -3,7 +3,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 import { UserInfo } from "@/components/user-info";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { ChevronsUpDown } from "lucide-react";
 import { UserMenuContent } from "@/components/user-menu-content";
 
@@ -14,11 +13,13 @@ export function NavUser() {
     <SidebarMenu className='grow-0 w-fit'>
       <SidebarMenuItem>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger asChild className='rounded-lg'>
             <SidebarMenuButton
               size={state === "collapsed" ? "default" : "lg"}
               className={`text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent group py-4 ${
-                state === "collapsed" ? "ps-0 rounded-lg rounded-s-full" : ""
+                state === "collapsed"
+                  ? "ps-0 hover:rounded-lg hover:bg-sidebar rounded-s-full active:rounded-lg active:bg-sidebar active:rounded-s-full"
+                  : ""
               }`}
             >
               <UserInfo />
