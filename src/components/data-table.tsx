@@ -88,7 +88,7 @@ export function DataTableServer<TData, TValue>({ columns, endpoint }: DataTableP
 
   return (
     <div>
-      <div className='flex items-center py-4 space-x-2'>
+      <div className='flex items-center pb-4 space-x-2'>
         <Input
           placeholder='Search by email...'
           value={filterValue}
@@ -149,7 +149,7 @@ export function DataTableServer<TData, TValue>({ columns, endpoint }: DataTableP
               </TableRow>
             )}
             {isLoading && (
-              <TableRow className='absolute !bg-white/50 top-0 left-0 w-full h-full z-1'>
+              <TableRow className='absolute !bg-white/50 dark:!bg-white/5 top-0 left-0 w-full h-full z-1'>
                 <TableCell colSpan={columns.length} className='text-center h-full flex items-center justify-center'>
                   <Loader2Icon className='animate-spin size-12' />
                 </TableCell>
