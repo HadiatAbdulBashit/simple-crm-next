@@ -28,7 +28,12 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    company: false,
+    lastContact: false,
+    phone: false,
+    tags: false,
+  });
 
   const table = useReactTable({
     data,
@@ -49,7 +54,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
 
   return (
     <div>
-      <div className='flex items-center py-4'>
+      <div className='flex items-center py-4 space-x-2'>
         <Input
           placeholder='Filter emails...'
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}

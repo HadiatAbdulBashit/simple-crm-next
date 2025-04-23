@@ -15,7 +15,7 @@ export default function CustomersPage() {
   return (
     <>
       <AppSidebarHeader breadcrumbs={breadcrumbs} />
-      <div className='flex h-full flex-1 flex-col gap-4 rounded-xl p-4'>
+      <div className='rounded-xl p-4 w-full'>
         <DataTable columns={columns} data={customer as Customer[]} />
       </div>
     </>

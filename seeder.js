@@ -12,7 +12,7 @@ const generateCustomer = () => ({
     id: faker.string.uuid(),
     name: faker.person.fullName(),
     email: faker.internet.email(),
-    phone: faker.phone.number('+62-8##-####-####'),
+    phone: faker.phone.number(),
     company: faker.company.name(),
     status: faker.helpers.arrayElement(['Active', 'Inactive', 'Prospect']),
     tags: faker.helpers.arrayElements(['VIP', 'Hot Lead', 'New', 'Follow Up'], faker.number.int({ min: 1, max: 3 })),
