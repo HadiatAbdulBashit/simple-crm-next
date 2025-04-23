@@ -10,8 +10,6 @@ const chartData = [
   { month: "February", desktop: 305 },
   { month: "March", desktop: 237 },
   { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
 ];
 
 const chartConfig = {
@@ -25,8 +23,8 @@ export default function BarChartComponent() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Label</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Total Customer</CardTitle>
+        <CardDescription>January - April 2025</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -50,7 +48,7 @@ export default function BarChartComponent() {
         <div className='flex gap-2 font-medium leading-none'>
           Trending up by 5.2% this month <TrendingUp className='h-4 w-4' />
         </div>
-        <div className='leading-none text-muted-foreground'>Showing total visitors for the last 6 months</div>
+        <div className='leading-none text-muted-foreground'>Showing total visitors for the last 4 months</div>
       </CardFooter>
     </Card>
   );

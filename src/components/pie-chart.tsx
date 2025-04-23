@@ -1,42 +1,41 @@
 "use client";
 
 import * as React from "react";
-import { TrendingUp } from "lucide-react";
 import { Label, Pie, PieChart, Sector } from "recharts";
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { PieSectorDataItem } from "recharts/types/polar/Pie";
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+  { browser: "asia", visitors: 275, fill: "var(--color-asia)" },
+  { browser: "oceanian", visitors: 200, fill: "var(--color-oceanian)" },
+  { browser: "europe", visitors: 287, fill: "var(--color-europe)" },
+  { browser: "america", visitors: 173, fill: "var(--color-america)" },
+  { browser: "africa", visitors: 190, fill: "var(--color-africa)" },
 ];
 
 const chartConfig = {
   visitors: {
     label: "Visitors",
   },
-  chrome: {
-    label: "Chrome",
+  asia: {
+    label: "Asia",
     color: "hsl(var(--chart-1))",
   },
-  safari: {
-    label: "Safari",
+  oceanian: {
+    label: "Oceanian",
     color: "hsl(var(--chart-2))",
   },
-  firefox: {
-    label: "Firefox",
+  europe: {
+    label: "Europe",
     color: "hsl(var(--chart-3))",
   },
-  edge: {
-    label: "Edge",
+  america: {
+    label: "America",
     color: "hsl(var(--chart-4))",
   },
-  other: {
-    label: "Other",
+  africa: {
+    label: "Africa",
     color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig;
@@ -49,8 +48,7 @@ export function PieChartComponent() {
   return (
     <Card className='flex flex-col'>
       <CardHeader className='items-center pb-0'>
-        <CardTitle>Pie Chart - Donut with Text</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Customer Demografy</CardTitle>
       </CardHeader>
       <CardContent className='flex-1 pb-0'>
         <ChartContainer config={chartConfig} className='mx-auto w-full h-full'>
@@ -93,7 +91,7 @@ export function PieChartComponent() {
                           {totalVisitors.toLocaleString()}
                         </tspan>
                         <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className='fill-muted-foreground'>
-                          Visitors
+                          Customer
                         </tspan>
                       </text>
                     );

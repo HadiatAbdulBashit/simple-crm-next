@@ -69,6 +69,10 @@ export function DataTableServer<TData, TValue>({ columns, endpoint }: DataTableP
     fetchData();
   }, [pagination, sorting, filterValue]);
 
+  useEffect(() => {
+    setPagination({ pageIndex: 0, pageSize: pagination.pageSize });
+  }, [sorting, filterValue]);
+
   const table = useReactTable({
     data,
     columns,

@@ -2,24 +2,24 @@
 
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { month: "January", inactive: 186, active: 280 },
+  { month: "February", inactive: 305, active: 400 },
+  { month: "March", inactive: 237, active: 320 },
+  { month: "April", inactive: 73, active: 490 },
+  { month: "May", inactive: 209, active: 330 },
+  { month: "June", inactive: 214, active: 440 },
 ];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  inactive: {
+    label: "Inactive",
     color: "hsl(var(--chart-1))",
   },
-  mobile: {
-    label: "Mobile",
+  active: {
+    label: "Active",
     color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig;
@@ -28,8 +28,8 @@ export default function AreaChartComponent() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Area Chart - Legend</CardTitle>
-        <CardDescription>Showing total visitors for the last 6 months</CardDescription>
+        <CardTitle>Customer Status</CardTitle>
+        <CardDescription>January - April 2025</CardDescription>
       </CardHeader>
       <CardContent className='grow'>
         <ChartContainer config={chartConfig} className='h-full w-full'>
@@ -44,13 +44,13 @@ export default function AreaChartComponent() {
             <CartesianGrid vertical={false} />
             <XAxis dataKey='month' tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
             <ChartTooltip cursor={false} content={<ChartTooltipContent indicator='line' />} />
-            <Area dataKey='mobile' type='natural' fill='var(--color-mobile)' fillOpacity={0.4} stroke='var(--color-mobile)' stackId='a' />
+            <Area dataKey='active' type='natural' fill='var(--color-active)' fillOpacity={0.4} stroke='var(--color-active)' stackId='a' />
             <Area
-              dataKey='desktop'
+              dataKey='inactive'
               type='natural'
-              fill='var(--color-desktop)'
+              fill='var(--color-inactive)'
               fillOpacity={0.4}
-              stroke='var(--color-desktop)'
+              stroke='var(--color-inactive)'
               stackId='a'
             />
             <ChartLegend content={<ChartLegendContent />} />
