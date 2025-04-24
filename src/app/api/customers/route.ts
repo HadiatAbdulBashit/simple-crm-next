@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 import customers from "@/constant/customers.constant.json";
+import { v4 as uuidv4 } from "uuid";
+
+import fs from "fs";
+import path from "path";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -40,4 +44,30 @@ export async function GET(req: Request) {
     data: paginated,
     totalPages,
   });
+}
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+
+    const newCustomer = {
+      id: uuidv4(),
+      name: body.name,
+      email: body.email,
+      phone: body.phone,
+      company: body.company,
+      status: body.status,
+      tags: body.tags || [],
+      lastContact: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+      assignedTo: body.assignedTo,
+    };
+
+    const filePath = path.join(process.cwd(), "src/constant/customers.constant.json");
+    fs.writeFileSync(filePath, JSON.stringify([...customers, newCustomer], null, 2));
+
+    return NextResponse.json({ success: true, customer: newCustomer }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ success: false, message: "Failed to create customer" }, { status: 400 });
+  }
 }

@@ -15,7 +15,11 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.title}>
-            <SidebarMenuButton asChild isActive={item.href === pathname} tooltip={{ children: item.title }}>
+            <SidebarMenuButton
+              asChild
+              isActive={item.href === "/admin" ? item.href === pathname : pathname.includes(item.href)}
+              tooltip={{ children: item.title }}
+            >
               <Link href={item.href} prefetch className='flex justify-between gap-2 group/item'>
                 <div className='flex gap-2 items-center'>
                   {item.icon && <item.icon />}

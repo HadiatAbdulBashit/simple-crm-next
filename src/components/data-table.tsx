@@ -11,12 +11,13 @@ import {
   VisibilityState,
 } from "@tanstack/react-table";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { DataTablePagination } from "@/components/pagination";
 import axiosInstance from "@/apis/axiosInstance";
 import { Loader2, Loader2Icon } from "lucide-react";
+import Link from "next/link";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -92,35 +93,40 @@ export function DataTableServer<TData, TValue>({ columns, endpoint }: DataTableP
 
   return (
     <div>
-      <div className='flex items-center pb-4 space-x-2'>
+      <div className='flex items-center pb-4 space-x-2 justify-between'>
         <Input
           placeholder='Search by email...'
           value={filterValue}
           onChange={(e) => setFilterValue(e.target.value)}
           className='max-w-xs !text-sm'
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant='outline' className='ml-auto'>
-              Columns
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align='end'>
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => (
-                <DropdownMenuCheckboxItem
-                  key={column.id}
-                  className='capitalize'
-                  checked={column.getIsVisible()}
-                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                >
-                  {column.id}
-                </DropdownMenuCheckboxItem>
-              ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className='flex gap-2'>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant='outline' className='ml-auto'>
+                Columns
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align='end'>
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => (
+                  <DropdownMenuCheckboxItem
+                    key={column.id}
+                    className='capitalize'
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                  >
+                    {column.id}
+                  </DropdownMenuCheckboxItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Link href='/admin/customers/create' className={buttonVariants({ variant: "default" })}>
+            Create
+          </Link>
+        </div>
       </div>
 
       <div className='rounded-md border mb-4'>
