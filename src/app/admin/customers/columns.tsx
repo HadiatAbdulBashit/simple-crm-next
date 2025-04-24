@@ -13,6 +13,7 @@ import {
 import { Customer } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
+import Link from "next/link";
 
 export const columns: ColumnDef<Customer>[] = [
   {
@@ -99,8 +100,9 @@ export const columns: ColumnDef<Customer>[] = [
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem onClick={() => navigator.clipboard.writeText(customer.id)}>Copy customer ID</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>View details</DropdownMenuItem>
-              <DropdownMenuItem>Send email</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href={`/admin/customers/${customer.id}/edit`}>Edit customer</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

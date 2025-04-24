@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 import path from "path";
 
+const filePath = path.join(process.cwd(), "src/constant/customers.constant.json");
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const page = parseInt(searchParams.get("page") || "1", 10);
@@ -63,7 +65,6 @@ export async function POST(req: Request) {
       assignedTo: body.assignedTo,
     };
 
-    const filePath = path.join(process.cwd(), "src/constant/customers.constant.json");
     fs.writeFileSync(filePath, JSON.stringify([...customers, newCustomer], null, 2));
 
     return NextResponse.json({ success: true, customer: newCustomer }, { status: 201 });
